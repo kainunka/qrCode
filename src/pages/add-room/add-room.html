@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>เพิ่มห้องเรียน</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+  <ion-input type="text" placeholder="ใส่ชื่อห้องเรียน" [(ngModel)]="nameRoom">
+  </ion-input>
+  </ion-item>
+  <button ion-button full icon-left (click)="add_room()">
+    <ion-icon name="md-add-circle">
+      เพิ่มข้อมูล
+    </ion-icon>
+  </button>
+</ion-content>

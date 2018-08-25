@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>เพิ่มรายวิชา</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-input type="text" placeholder="ใส่ชื่อวิชา" [(ngModel)]="qrData">
+    </ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>ใส่เวลาเข้าเรียน</ion-label>
+    <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="myDateStart"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+      <ion-label>ใส่เวลาเลิกเรียน</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="myDateEnd"></ion-datetime>
+  </ion-item>
+
+   <!-- <button ion-button full icon-left (click)="createCode()">
+    <ion-icon name="barcode">
+      Create Code
+    </ion-icon>
+  </button>
+
+  <ion-card *ngIf="createdCode">
+    <ngx-qrcode [qrc-value]="createdCode">
+      <ion-card-content>
+        <p>Value: {{ createdCode }}</p>
+      </ion-card-content>
+    </ngx-qrcode>
+  </ion-card> -->
+  <p></p>
+  <button ion-button full icon-left (click)="saveCourse()">
+      <ion-icon name="md-add-circle">
+        Save
+      </ion-icon>
+  </button>
+</ion-content>

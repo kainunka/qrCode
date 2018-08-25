@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>QR code วิชา {{ nameCourse }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card *ngIf="createdCode">
+      <ngx-qrcode [qrc-value]="createdCode">
+        <ion-card-content>
+          <p>Value: {{ createdCode }}</p>
+        </ion-card-content>
+      </ngx-qrcode>
+    </ion-card>
+</ion-content>

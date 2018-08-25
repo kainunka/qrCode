@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>รายชื่อวิชาในห้อง {{ roomName }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-fab bottom right>
+        <button ion-fab mini (click)="add_course()"><ion-icon name="add"></ion-icon></button>
+      </ion-fab>
+  <ion-list padding>
+    <ion-item *ngFor="let contact of contacts"> 
+      {{ contact.name }}
+      <ion-icon name="md-barcode" item-end color="primary" (click)="viewQrcode(contact.course_id, contact.name)"></ion-icon>
+      <ion-icon name="md-trash" item-end color="danger" (click)="removeCourse(contact.course_id)"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  
+</ion-content>
