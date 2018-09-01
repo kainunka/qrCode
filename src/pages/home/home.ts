@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,  ModalController, AlertController } from 'ionic-angular';
+import { NavController,  ModalController, AlertController, ToastController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner'
 import axios from 'axios'
 import { Storage } from '@ionic/storage';
@@ -27,7 +27,7 @@ export class HomePage {
   public scanData = [];
   scannedCode = null;
 
-  constructor(public navCtrl: NavController,  public modalCtrl: ModalController, public qrScanner: BarcodeScanner, public storage: Storage, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController,  public modalCtrl: ModalController, public qrScanner: BarcodeScanner, public storage: Storage, private formBuilder: FormBuilder, public alertCtrl: AlertController, private toastCtrl: ToastController) {
 
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -186,6 +186,20 @@ export class HomePage {
     alert.present();
   }
 
+  presentToast = (value) => {
+    let toast = this.toastCtrl.create({
+      message: value,
+      duration: 3000,
+      position: 'bottom'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  }
+
   // ฟังชั่นเรียกใช้เมิื่อแสกนคิวอาโค้ด จะไปหารายวิชาในฐานข้อมูล
   callJoinRoom = (course_id, user_id, time) => {
     let bodyFormData = new FormData();
@@ -208,6 +222,10 @@ export class HomePage {
     axios(data).then((response) => {
         if (response.data.result == 1) {
           this.scanData.push(response.data)
+        } else {
+          if (!_.isUndefined(response.data.status)) {
+            this.presentToast(response.data.status)
+          }
         }
     })
     .catch((response) => {
@@ -328,5 +346,8 @@ export class HomePage {
     this.storage.remove("users_data")
   }
 
+  signup = () => {
+    this.navCtrl.push("SignupPage")
+  }
 
 }

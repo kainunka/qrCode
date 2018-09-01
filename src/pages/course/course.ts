@@ -104,10 +104,11 @@ export class CoursePage {
     this.callRemoveCourse(id)
   }
 
-  viewQrcode = (id, name) => {
+  viewQrcode = (id, name, end_time) => {
     this.navCtrl.push("ViewQrcodePage", {
       qrcode: id,
-      name: name
+      name: name,
+      end_time: end_time
     })
   }
 

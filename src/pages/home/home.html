@@ -79,8 +79,14 @@
       </ion-row>
       
       <ion-row>
-        <ion-col class="signup-col">
+        <ion-col class="login-col">
           <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.valid">Login</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="button" (click)="signup()">SignUp</button>
         </ion-col>
       </ion-row>
       

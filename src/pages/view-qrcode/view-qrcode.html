@@ -15,4 +15,10 @@
         </ion-card-content>
       </ngx-qrcode>
     </ion-card>
+
+    <ion-card *ngIf="timeCountDown">
+        <ion-card-content>
+          {{ timeCountDown }}
+        </ion-card-content>
+    </ion-card>
 </ion-content>

@@ -34,8 +34,13 @@ page-home {
             box-shadow: none !important;
         }
     
-        .signup-col {
+        .login-col {
             margin: 0px 16px 0px 16px;
+            padding-bottom: 20px;
+        }
+
+        .signup-col {
+            margin: -16px 16px 0px 16px;
             padding-bottom: 20px;
         }
     
