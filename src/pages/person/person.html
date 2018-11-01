@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>รายชื่อคนในห้อง {{ roomName }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list padding>
+    <ion-item *ngFor="let contact of nameUser"> 
+      {{ contact.name }}
+    </ion-item>
+  </ion-list>
+</ion-content>

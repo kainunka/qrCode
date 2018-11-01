@@ -13,6 +13,7 @@
   <ion-list padding>
     <ion-item *ngFor="let contact of contacts"> 
       {{ contact.name }}
+      <ion-icon name="md-person" item-end color="primary" (click)="goToPerson(contact.name, contact.course_id)"></ion-icon>
       <ion-icon name="md-barcode" item-end color="primary" (click)="viewQrcode(contact.course_id, contact.name, contact.end_time)"></ion-icon>
       <ion-icon name="md-trash" item-end color="danger" (click)="removeCourse(contact.course_id)"></ion-icon>
     </ion-item>

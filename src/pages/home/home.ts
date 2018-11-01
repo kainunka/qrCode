@@ -294,6 +294,7 @@ export class HomePage {
     this.callDataRemove(id)
   }
 
+  
   goToCouse = (name, id) => {
     this.navCtrl.push("CoursePage", {
       name: name,

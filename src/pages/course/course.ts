@@ -4,6 +4,7 @@ import axios from 'axios'
 import _ from 'lodash'
 
 const serverCourse = "http://qrcode-app.000webhostapp.com/course.php"
+const serverUser = "http://qrcode-app.000webhostapp.com/users.php"
 
 @IonicPage()
 @Component({
@@ -14,11 +15,13 @@ export class CoursePage {
   roomName =  "";
   roomID = null;
   contacts = []
+  userData = []
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.roomName = this.navParams.get('name')
     this.roomID = this.navParams.get('id')
     this.callDataCouse(this.roomID)
+    this.callUser()
   }
 
   // ฟังชั่นเรียกข้อมูลรายชื่อห้องวิชาในห้่องเรียนทั้งหมด
@@ -50,6 +53,34 @@ export class CoursePage {
 
   }
 
+  callUser = () => {
+    let bodyFormData = new FormData();
+    bodyFormData.set('request', 'get');
+    let data = {
+      method: 'post',
+      url: serverUser,
+      data: bodyFormData,
+      config: { 
+        headers: {
+          'Content-Type': 'multipart/form-data' 
+        }
+      }
+    }
+
+    axios(data).then((response) => {
+      // console.log(response)
+      if (response.data.result == 1) {
+        this.userData = response.data.data
+        // console.log(this.userData)
+      }
+    })
+    .catch((response) => {
+        console.log(response)
+        this.userData = response
+    });
+
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad CoursePage');
   }
@@ -59,6 +90,14 @@ export class CoursePage {
     this.navCtrl.push("AddCoursePage", {
       roomID: this.roomID,
       callback: this.getDataCourse
+    })
+  }
+
+  goToPerson = (name, id) => {
+    this.navCtrl.push("PersonPage", {
+      name: name,
+      id: id,
+      user: this.userData
     })
   }
 
